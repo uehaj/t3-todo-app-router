@@ -1,65 +1,31 @@
-import Link from "next/link";
-
-import { CreatePost } from "~/app/_components/create-post";
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import { type NextPage } from "next";
+import Head from "next/head";
 import { api } from "~/trpc/server";
+import CreateTodo from "./_components/CreateTodo";
+import Buttons from "./_components/Buttons";
+import TodoList from "./_components/TodoList";
 
-export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
+const TodoApp: NextPage = async () => {
+  // const todos = await api.todo.getAll();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
-            </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
+    <>
+      <Head>
+        <title>TodoApp</title>
+        <meta name="description" content="TodoApp by create-t3-app" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="container mx-auto p-4">
+        <h1 className="mb-4 text-4xl font-bold">Todoアプリ</h1>
+        <div>
+          <CreateTodo />
         </div>
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p>
-        </div>
-
-        <CrudShowcase />
+        <TodoList></TodoList>
       </div>
-    </main>
+    </>
   );
-}
-
-async function CrudShowcase() {
-  const latestPost = await api.post.getLatest();
-
-  return (
-    <div className="w-full max-w-xs">
-      {latestPost ? (
-        <p className="truncate">Your most recent post: {latestPost.name}</p>
-      ) : (
-        <p>You have no posts yet.</p>
-      )}
-
-      <CreatePost />
-    </div>
-  );
-}
+};
+export default TodoApp;
