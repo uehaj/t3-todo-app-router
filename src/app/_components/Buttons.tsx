@@ -6,6 +6,7 @@
 import { api } from "~/trpc/react";
 import type { AppRouter } from "~/server/api/root";
 import type { inferRouterOutputs } from "@trpc/server";
+import { Button } from "./Button";
 
 type Props = {
   todo: inferRouterOutputs<AppRouter>["todo"]["getAll"][0];

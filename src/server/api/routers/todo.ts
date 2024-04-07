@@ -2,7 +2,8 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const todoRouter = createTRPCRouter({
-  getAll: publicProcedure.input(z.void()).query(({ ctx }) => {
+  getAll: publicProcedure.input(z.void()).query(async ({ ctx }) => {
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
     return ctx.db.todo.findMany({ orderBy: [{ createdAt: "desc" }] });
   }),
   add: publicProcedure
@@ -11,7 +12,7 @@ export const todoRouter = createTRPCRouter({
         text: z.string(),
       }),
     )
-    .mutation(({ ctx, input }) => {
+    .mutation(async ({ ctx, input }) => {
       const { text } = input;
       return ctx.db.todo.create({
         data: {

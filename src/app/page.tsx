@@ -3,14 +3,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { type NextPage } from "next";
 import Head from "next/head";
-import { api } from "~/trpc/server";
 import CreateTodo from "./_components/CreateTodo";
-import Buttons from "./_components/Buttons";
-import TodoList from "./_components/TodoList";
+import { Suspense } from "react";
+import TodoSC from "./_components/TodoSC";
+import TodoCC from "./_components/TodoCC";
 
 const TodoApp: NextPage = async () => {
-  // const todos = await api.todo.getAll();
-
   return (
     <>
       <Head>
@@ -20,10 +18,14 @@ const TodoApp: NextPage = async () => {
       </Head>
       <div className="container mx-auto p-4">
         <h1 className="mb-4 text-4xl font-bold">Todoアプリ</h1>
-        <div>
-          <CreateTodo />
-        </div>
-        <TodoList></TodoList>
+        <TodoCC>
+          <CreateTodo></CreateTodo>
+          <ul id="taskList" className="list-inside list-disc">
+            <Suspense fallback={<div>Loading...</div>}>
+              <TodoSC />
+            </Suspense>
+          </ul>
+        </TodoCC>
       </div>
     </>
   );
