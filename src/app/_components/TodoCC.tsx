@@ -10,14 +10,21 @@ import { api } from "~/trpc/react";
 import CreateTodo from "./CreateTodo";
 
 type Props = {
-  //  todos: inferRouterOutputs<AppRouter>["todo"]["getAll"];
   children: React.ReactNode;
 };
 
-type Todo = inferRouterOutputs<AppRouter>["todo"]["getAll"][0];
+// type Todo = inferRouterOutputs<AppRouter>["todo"]["getAll"][0];
 
 export default function TodoCC({ children }: Props) {
   const { data, isLoading, isError } = api.todo.getAll.useQuery();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Something wrong...</div>;
+  }
 
   return (
     <div>
@@ -39,15 +46,5 @@ export default function TodoCC({ children }: Props) {
         children
       )}
     </div>
-    // <ul id="taskList" className="list-inside list-disc">
-    //   {todos?.data?.map((todo) => (
-    //     <li
-    //       className="mb-2 flex items-center rounded bg-white p-2"
-    //       key={todo.id}
-    //     >
-    //       <Buttons todo={todo} />
-    //     </li>
-    //   ))}
-    // </ul>
   );
 }

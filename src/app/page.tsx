@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { type NextPage } from "next";
-import Head from "next/head";
 import CreateTodo from "./_components/CreateTodo";
 import { Suspense } from "react";
 import TodoSC from "./_components/TodoSC";
@@ -10,14 +9,12 @@ import TodoCC from "./_components/TodoCC";
 
 const TodoApp: NextPage = async () => {
   return (
-    <>
-      <Head>
-        <title>TodoApp</title>
-        <meta name="description" content="TodoApp by create-t3-app" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <div className="container mx-auto p-4">
-        <h1 className="mb-4 text-4xl font-bold">Todoアプリ</h1>
+    <main className="min-h-screen bg-slate-950 p-2">
+      <div className="container mx-auto flex flex-col p-4">
+        <h1 className="shadow-neon mb-4 border-2 border-amber-500 p-2 text-4xl font-bold text-amber-500">
+          Todoアプリ
+        </h1>
+        <br />
         <TodoCC>
           <CreateTodo></CreateTodo>
           <ul id="taskList" className="list-inside list-disc">
@@ -27,7 +24,7 @@ const TodoApp: NextPage = async () => {
           </ul>
         </TodoCC>
       </div>
-    </>
+    </main>
   );
 };
 export default TodoApp;
