@@ -31,10 +31,10 @@ export default function TodoCC({ children }: Props) {
       {data ? (
         <>
           <CreateTodo></CreateTodo>
-          <ul id="taskList" className="list-inside list-disc">
+          <ul id="taskList" className="shadow-neon list-inside list-disc">
             {data?.map((todo) => (
               <li
-                className="mb-2 flex items-center rounded bg-white p-2"
+                className="mb-2 flex items-center rounded p-2 text-white"
                 key={todo.id}
               >
                 <Buttons todo={todo} />
