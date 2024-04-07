@@ -35,19 +35,17 @@ export default function TodoItem({ todo }: Props) {
     <>
       <input
         type="checkbox"
-        className="shadow-neon mr-2 accent-pink-500"
+        className="shadow-neon ml-2 mr-4 accent-pink-500"
         checked={todo.done}
         onChange={() => handleDoneTodo(todo.id, !todo.done)}
       />
       <span className={todo.done ? "line-through" : ""}>{todo.text}</span>
-      <button
-        className="shadow-neon ml-auto rounded border-2 border-red-400 bg-slate-950 px-2 py-1 font-bold text-red-300 hover:bg-red-700"
+      <Button
+        variant={"danger"}
+        size={"sm"}
+        className={"ml-auto"}
         onClick={() => handleDeleteTodo(todo.id)}
       >
-        ×
-      </button>
-
-      <Button variant={"danger"} onClick={() => handleDeleteTodo(todo.id)}>
         ×
       </Button>
     </>

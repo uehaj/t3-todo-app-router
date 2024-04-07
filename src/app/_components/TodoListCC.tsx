@@ -3,9 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 "use client";
 
-import type { inferRouterOutputs } from "@trpc/server";
 import TodoItem from "./TodoItem";
-import type { AppRouter } from "~/server/api/root";
 import { api } from "~/trpc/react";
 import CreateTodo from "./CreateTodo";
 
@@ -13,10 +11,10 @@ type Props = {
   children: React.ReactNode;
 };
 
-// type Todo = inferRouterOutputs<AppRouter>["todo"]["getAll"][0];
-
 export default function TodoListCC({ children }: Props) {
   const { data, isLoading, isError } = api.todo.getAll.useQuery();
+  // ここでdataの型は、以下の型に推論される。
+  // type Todo = inferRouterOutputs<AppRouter>["todo"]["getAll"][0];
 
   if (isLoading) {
     return <div>Loading...</div>;

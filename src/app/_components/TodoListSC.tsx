@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { api } from "~/trpc/server";
+import { Button } from "./Button";
 
 export default async function TodoListSC() {
   const todos = await api.todo.getAll();
@@ -16,9 +17,7 @@ export default async function TodoListSC() {
           <span className={todo.done ? "line-through" : "blue-500"}>
             {todo.text}
           </span>
-          <button className="ml-auto rounded bg-red-500 px-2 py-1 font-bold text-white hover:bg-red-700">
-            ×
-          </button>
+          <Button variant={"danger"}>×</Button>
         </li>
       ))}
     </>

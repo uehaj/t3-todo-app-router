@@ -23,15 +23,12 @@ export default function CreateTodo() {
   return (
     <form className="flex" onSubmit={handleAddTodo}>
       <input
-        className="shadow-neon mb-4 mr-4 flex-grow rounded border-2 bg-slate-950 p-2"
+        className="shadow-neon mb-4 mr-4 flex-grow rounded border-2 bg-slate-950 p-2 text-white"
         type="text"
         name="text"
         placeholder="新しいタスクを入力"
       />
-      <button className="shadow-neon mb-4 rounded border-2 border-blue-400 bg-slate-950 px-4 py-2 font-bold text-blue-500 hover:bg-blue-700">
-        タスクを追加
-      </button>
-      <Button>タスクを追加</Button>
+      <Button type="submit">タスクを追加</Button>
     </form>
   );
 }
