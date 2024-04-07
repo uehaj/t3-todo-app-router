@@ -46,6 +46,10 @@ export default function Buttons({ todo }: Props) {
       >
         ×
       </button>
+
+      <Button variant={"danger"} onClick={() => handleDeleteTodo(todo.id)}>
+        ×
+      </Button>
     </>
   );
 }

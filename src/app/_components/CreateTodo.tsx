@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import { api } from "~/trpc/react";
+import { Button } from "./Button";
 
 export default function CreateTodo() {
   const utils = api.useUtils();
@@ -27,9 +28,10 @@ export default function CreateTodo() {
         name="text"
         placeholder="新しいタスクを入力"
       />
-      <button className="shadow-neon border-2 mb-4 rounded border-blue-400 bg-slate-950 px-4 py-2 font-bold text-blue-500 hover:bg-blue-700">
+      <button className="shadow-neon mb-4 rounded border-2 border-blue-400 bg-slate-950 px-4 py-2 font-bold text-blue-500 hover:bg-blue-700">
         タスクを追加
       </button>
+      <Button>タスクを追加</Button>
     </form>
   );
 }

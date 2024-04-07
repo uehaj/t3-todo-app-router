@@ -4,12 +4,15 @@ import React from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const button = tv({
-  base: `flex h-10 items-center justify-center gap-2 rounded-full px-4 text-textL_medium transition disabled:opacity-50 disabled:pointer-events-none transition`,
+  // shadow-neon ml-auto rounded border-2 border-red-400 bg-slate-950 px-2 py-1 font-bold text-red-300 hover:bg-red-700"
+  //  delete
+  //"shadow-neon border-2 mb-4 rounded border-blue-400 bg-slate-950 px-4 py-2 font-bold text-blue-500 hover:bg-blue-700"
+  // タスクを追加
+  base: `shadow-neon rounded bg-slate-950 px-4 py-2font-bold border-2 `,
   variants: {
     variant: {
-      primary: `bg-accent text-primaryWhite hover:opacity-75`,
-      outline: `bg-white text-accent border border-accent hover:opacity-75`,
-      icon: `bg-transparent hover:bg-bg-gray rounded-full p-2 h-fit`,
+      primary: `mb-4 border-blue-400 text-blue-500 hover:bg-blue-700`,
+      danger: `ml-auto border-red-400 text-red-300 hover:bg-red-700"`,
     },
   },
   defaultVariants: {
