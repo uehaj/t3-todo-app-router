@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { api } from "~/trpc/server";
 
-export default async function TodoSC() {
+export default async function TodoListSC() {
   const todos = await api.todo.getAll();
   return (
     <>

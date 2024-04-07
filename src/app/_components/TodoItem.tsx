@@ -12,7 +12,7 @@ type Props = {
   todo: inferRouterOutputs<AppRouter>["todo"]["getAll"][0];
 };
 
-export default function Buttons({ todo }: Props) {
+export default function TodoItem({ todo }: Props) {
   const utils = api.useUtils();
   const { mutateAsync: todoDeleteAsync } = api.todo.delete.useMutation({
     onSettled: () => {

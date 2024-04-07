@@ -4,7 +4,7 @@
 "use client";
 
 import type { inferRouterOutputs } from "@trpc/server";
-import Buttons from "./Buttons";
+import TodoItem from "./TodoItem";
 import type { AppRouter } from "~/server/api/root";
 import { api } from "~/trpc/react";
 import CreateTodo from "./CreateTodo";
@@ -15,7 +15,7 @@ type Props = {
 
 // type Todo = inferRouterOutputs<AppRouter>["todo"]["getAll"][0];
 
-export default function TodoCC({ children }: Props) {
+export default function TodoListCC({ children }: Props) {
   const { data, isLoading, isError } = api.todo.getAll.useQuery();
 
   if (isLoading) {
@@ -37,7 +37,7 @@ export default function TodoCC({ children }: Props) {
                 className="mb-2 flex items-center rounded p-2 text-white"
                 key={todo.id}
               >
-                <Buttons todo={todo} />
+                <TodoItem todo={todo} />
               </li>
             ))}
           </ul>

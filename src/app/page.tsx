@@ -4,8 +4,8 @@
 import { type NextPage } from "next";
 import CreateTodo from "./_components/CreateTodo";
 import { Suspense } from "react";
-import TodoSC from "./_components/TodoSC";
-import TodoCC from "./_components/TodoCC";
+import TodoListSC from "./_components/TodoListSC";
+import TodoListCC from "./_components/TodoListCC";
 
 const TodoApp: NextPage = async () => {
   return (
@@ -15,14 +15,14 @@ const TodoApp: NextPage = async () => {
           Todoアプリ
         </h1>
         <br />
-        <TodoCC>
+        <TodoListCC>
           <CreateTodo></CreateTodo>
           <ul id="taskList" className="list-inside list-disc">
             <Suspense fallback={<div>Loading...</div>}>
-              <TodoSC />
+              <TodoListSC />
             </Suspense>
           </ul>
-        </TodoCC>
+        </TodoListCC>
       </div>
     </main>
   );
