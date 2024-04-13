@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import React from "react";
+import React, { type ComponentProps } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const button = tv({
@@ -22,13 +22,10 @@ export const button = tv({
   },
 });
 
-type ButtonVariants = VariantProps<typeof button>;
-
-interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonVariants {
-  children: React.ReactNode;
-}
+type ButtonProps = ComponentProps<"button"> &
+  VariantProps<typeof button> & {
+    children: React.ReactNode;
+  };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
