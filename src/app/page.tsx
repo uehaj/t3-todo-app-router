@@ -1,8 +1,8 @@
 import { type NextPage } from "next";
 import TodoListSC from "~/app/_components/TodoListSC";
-import TodoListCC from "~/app/_components/TodoListCC";
-import { Suspense } from "react";
+import TodoList from "~/app/_components/TodoList";
 
+import { Suspense } from "react";
 const TodoApp: NextPage = async () => {
   return (
     <main className="min-h-screen bg-slate-950 p-2">
@@ -12,7 +12,7 @@ const TodoApp: NextPage = async () => {
         </h1>
         <br />
         <Suspense fallback={<TodoListSC />}>
-          <TodoListCC />
+          <TodoList />
         </Suspense>
       </div>
     </main>

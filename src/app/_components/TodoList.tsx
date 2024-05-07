@@ -4,7 +4,7 @@ import TodoItem from "./TodoItem";
 import { api } from "~/trpc/react";
 import CreateTodo from "./CreateTodo";
 
-export default function TodoListCC() {
+export default function TodoList() {
   const [todos] = api.todo.getAll.useSuspenseQuery();
   return (
     <>
