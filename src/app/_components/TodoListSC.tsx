@@ -1,22 +1,25 @@
 import { api } from "~/trpc/server";
-import { Button } from "./Button";
+import TodoItem from "~/app/_components/TodoItem";
+import CreateTodo from "./CreateTodo";
 
 export default async function TodoListSC() {
   const todos = await api.todo.getAll();
   return (
     <>
-      {todos.map((todo) => (
-        <li
-          key={todo.id}
-          className="mb-2 flex items-center rounded bg-blue-100 p-2"
-        >
-          <input type="checkbox" className="mr-2" checked={todo.done} />
-          <span className={todo.done ? "line-through" : "blue-500"}>
-            {todo.text}
-          </span>
-          <Button variant={"danger"}>×</Button>
-        </li>
-      ))}
+      <CreateTodo />
+      <ul
+        id="taskList"
+        className="list-inside list-disc bg-blue-800 shadow-neon"
+      >
+        {todos.map((todo) => (
+          <li
+            key={todo.id}
+            className="mb-2 flex items-center rounded p-2 text-white"
+          >
+            <TodoItem todo={todo} />
+          </li>
+        ))}
+      </ul>
     </>
   );
 }

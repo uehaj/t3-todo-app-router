@@ -32,7 +32,7 @@ export default function TodoItem({ todo }: Props) {
     <>
       <input
         type="checkbox"
-        className="shadow-neon ml-2 mr-4 accent-pink-500"
+        className="ml-2 mr-4 accent-pink-500 shadow-neon"
         checked={todo.done}
         onChange={() => handleDoneTodo(todo.id, !todo.done)}
       />

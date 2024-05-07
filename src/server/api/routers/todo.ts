@@ -2,8 +2,12 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const todoRouter = createTRPCRouter({
+  getAllFast: publicProcedure.input(z.void()).query(async ({ ctx }) => {
+    return ctx.db.todo.findMany({ orderBy: [{ createdAt: "desc" }] });
+  }),
+
   getAll: publicProcedure.input(z.void()).query(async ({ ctx }) => {
-    await new Promise((resolve) => setTimeout(resolve, 200));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     return ctx.db.todo.findMany({ orderBy: [{ createdAt: "desc" }] });
   }),
   add: publicProcedure
