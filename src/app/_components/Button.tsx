@@ -1,13 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import React, { type ComponentProps } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const button = tv({
-  base: `shadow-neon rounded bg-slate-950 font-bold border-2 `,
+  base: `shadow-neon rounded bg-slate-950 font-bold border-2 mb-4 `,
   variants: {
     variant: {
-      primary: `mb-4 border-blue-400 text-blue-500 hover:bg-blue-700`,
+      primary: `border-blue-400 text-blue-500 hover:bg-blue-700`,
       danger: `border-red-400 text-red-300 hover:bg-red-700"`,
     },
     size: {
