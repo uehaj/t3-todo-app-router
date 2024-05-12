@@ -1,7 +1,7 @@
 "use client";
 
-import TodoItem from "./TodoItem";
 import { api } from "~/trpc/react";
+import TodoItem from "./TodoItem";
 import CreateTodo from "./CreateTodo";
 
 export default function TodoList() {

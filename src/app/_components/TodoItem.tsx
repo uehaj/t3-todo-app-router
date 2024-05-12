@@ -1,12 +1,11 @@
 "use client";
 
-import { api } from "~/trpc/react";
-import type { AppRouter } from "~/server/api/root";
-import type { inferRouterOutputs } from "@trpc/server";
+import { type RouterOutputs, api } from "~/trpc/react";
+import { type AppRouter } from "~/server/api/root";
 import { Button } from "./Button";
 
 type Props = {
-  todo: inferRouterOutputs<AppRouter>["todo"]["getAll"][0];
+  todo: RouterOutputs["todo"]["getAll"][0];
 };
 
 export default function TodoItem({ todo }: Props) {

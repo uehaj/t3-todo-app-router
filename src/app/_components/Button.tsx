@@ -9,9 +9,9 @@ export const button = tv({
       danger: `border-red-400 text-red-300 hover:bg-red-700"`,
     },
     size: {
-      lg: `px-6 py-4`,
       sm: `px-2 py-1`,
       md: `px-4 py-2`,
+      lg: `px-6 py-4`,
     },
   },
   defaultVariants: {
