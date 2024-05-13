@@ -30,7 +30,6 @@ export const todoRouter = createTRPCRouter({
     .input(z.object({ id: z.string(), done: z.boolean() }))
     .mutation(({ ctx, input }) => {
       const { id, done } = input;
-      console.log(`id=`, id, ` done=`, done);
       return ctx.db.todo.update({ where: { id }, data: { done } });
     }),
 });

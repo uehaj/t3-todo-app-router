@@ -1,30 +1,35 @@
 "use client";
 
-import { type RouterOutputs, api } from "~/trpc/react";
-import { type AppRouter } from "~/server/api/root";
 import { Button } from "./Button";
+import { deleteTodo, doneTodo, type Todo } from "~/app/_actions/todo";
+import { useOptimistic, useTransition } from "react";
 
 type Props = {
-  todo: RouterOutputs["todo"]["getAll"][0];
+  todo: Todo;
+  reload: () => void;
 };
 
-export default function TodoItem({ todo }: Props) {
-  const utils = api.useUtils();
-  const { mutateAsync: todoDeleteAsync } = api.todo.delete.useMutation({
-    onSettled: () => {
-      void utils.todo.invalidate();
-    },
-  });
-  const { mutateAsync: todoDoneAsync } = api.todo.done.useMutation({
-    onSettled: () => {
-      void utils.todo.invalidate();
-    },
-  });
+export default function TodoItem({ todo, reload }: Props) {
+  const [isPending, startTransition] = useTransition();
+
   function handleDeleteTodo(id: string) {
-    void todoDeleteAsync({ id });
+    startTransition(async () => {
+      await deleteTodo({} as FormData, id);
+    });
+    reload();
   }
+
+  const [optimisticDone, setOptimisticDone] = useOptimistic<boolean, boolean>(
+    todo.done,
+    (state, newDone) => newDone,
+  );
+
   function handleDoneTodo(id: string, done: boolean) {
-    void todoDoneAsync({ id, done });
+    startTransition(async () => {
+      setOptimisticDone(done);
+      await doneTodo({} as FormData, id, done);
+    });
+    reload();
   }
 
   return (
@@ -32,7 +37,7 @@ export default function TodoItem({ todo }: Props) {
       <input
         type="checkbox"
         className="ml-2 mr-4 accent-pink-500 shadow-neon"
-        checked={todo.done}
+        checked={optimisticDone}
         onChange={() => handleDoneTodo(todo.id, !todo.done)}
       />
       <span className={todo.done ? "line-through" : ""}>{todo.text}</span>

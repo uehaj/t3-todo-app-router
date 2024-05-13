@@ -1,27 +1,28 @@
 "use client";
 
-import type { FormEvent } from "react";
-import { api } from "~/trpc/react";
+import { useRef } from "react";
 import { Button } from "./Button";
+import { addTodo } from "~/app/_actions/todo";
 
-export default function CreateTodo() {
-  const utils = api.useUtils();
+type Props = {
+  onCreated: (formData: FormData) => void;
+  reload: () => void;
+};
 
-  const { mutateAsync: todoAddAsync } = api.todo.add.useMutation({
-    onSettled: () => {
-      void utils.todo.invalidate();
-    },
-  });
-  function handleAddTodo(e: FormEvent) {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    const formJson = Object.fromEntries(formData.entries());
-    form.reset();
-    void todoAddAsync(formJson as { text: string });
-  }
+export default function CreateTodo({ onCreated, reload }: Props) {
+  const ref = useRef<HTMLFormElement>(null);
+
   return (
-    <form className="flex" onSubmit={handleAddTodo}>
+    <form
+      className="flex"
+      action={async (formData) => {
+        onCreated(formData);
+        ref.current?.reset();
+        await addTodo(formData);
+        reload();
+      }}
+      ref={ref}
+    >
       <input
         className="mb-4 mr-4 flex-grow rounded border-2 bg-slate-950 p-2 text-white shadow-neon"
         type="text"
