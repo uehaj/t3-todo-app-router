@@ -12,8 +12,7 @@ IT Media連載記事[フルスタックフレームワーク、T3 Stack入門](h
 ```
 > cd t3-todo-app-router
 > npm install
-> ./start-database.sh
-> npx prisma db push
+> npm run db:push
 > npm run dev
 # http://localhost:3000/にアクセス
 ```
