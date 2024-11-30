@@ -38,7 +38,7 @@ export default function TodoList() {
       <ul id="taskList" className="list-inside list-disc shadow-neon">
         {optimisticTodos?.map((todo) => (
           <li
-            key={todo.id}
+            key={todo.id ?? "dummy"}
             className="mb-2 flex items-center rounded p-2 text-white"
           >
             <TodoItem todo={todo} reload={reload} />

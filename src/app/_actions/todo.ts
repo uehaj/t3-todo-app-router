@@ -13,7 +13,6 @@ export async function getAllTodo(_formData: FormData) {
 }
 
 export async function addTodo(formData: FormData) {
-  //  await new Promise((resolve) => setTimeout(resolve, 2000));
   return db.todo.create({
     data: {
       done: false,
@@ -23,11 +22,9 @@ export async function addTodo(formData: FormData) {
 }
 
 export async function deleteTodo(_formData: FormData, id: string) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
   return db.todo.delete({ where: { id } });
 }
 
 export async function doneTodo(_formData: FormData, id: string, done: boolean) {
-  //await new Promise((resolve) => setTimeout(resolve, 2000));
   return db.todo.update({ where: { id }, data: { done } });
 }
