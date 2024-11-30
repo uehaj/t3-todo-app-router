@@ -19,7 +19,9 @@ IT Media連載記事[フルスタックフレームワーク、T3 Stack入門](h
 
 ```
 
-## OpenAPI sample
+## OpenAPI Sample
+
+以下でREST呼び出しが可能です。
 
 ```
 curl -X GET -H 'Content-Type: application/json' 'http://localhost:3000/api/todo'
@@ -30,3 +32,12 @@ curl -X DELETE -H 'Content-Type: application/json' 'http://localhost:3000/api/to
 curl -X GET -H 'Content-Type: application/json' 'http://localhost:3000/api/todo'
 ```
 
+##  Swagger UI
+
+以下のURLでSwagger UIが表示できます。
+
+http://localhost:3000/openapi
+
+以下のURLでOpenAIのjsonが取得できます。
+
+http://localhost:3000/api/openapi.json
