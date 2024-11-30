@@ -17,6 +17,7 @@ IT Media連載記事[フルスタックフレームワーク、T3 Stack入門](h
 > npm run dev
 # http://localhost:3000/にアクセス
 
+
 ```
 
 ## OpenAPI Sample
@@ -41,3 +42,11 @@ http://localhost:3000/openapi
 以下のURLでOpenAIのjsonが取得できます。
 
 http://localhost:3000/api/openapi.json
+
+
+# GitHub Repositories and Branches
+
+- [t3-todo / Pages Router](https://github.com/uehaj/t3-todo)
+- [t3-todo / App Router](https://github.com/uehaj/t3-todo-app-router)
+- [t3-todo / App Router with Server Actions](https://github.com/uehaj/t3-todo-app-router/tree/server_actions)
+- [t3-todo / AppRouter with trpc-to-openapi](https://github.com/uehaj/t3-todo-app-router/tree/trpc-to-openapi)
