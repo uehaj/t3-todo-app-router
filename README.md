@@ -16,5 +16,17 @@ IT Media連載記事[フルスタックフレームワーク、T3 Stack入門](h
 > npm run db:push
 > npm run dev
 # http://localhost:3000/にアクセス
+
+```
+
+## OpenAPI sample
+
+```
+curl -X GET -H 'Content-Type: application/json' 'http://localhost:3000/api/todo'
+curl -X POST -H 'Content-Type: application/json' 'http://localhost:3000/api/todo' -d '{"done":false,"text":"test1"}'
+curl -X POST -H 'Content-Type: application/json' 'http://localhost:3000/api/todo' -d '{"done":false,"text":"test2"}'
+curl -X PUT -H 'Content-Type: application/json' 'http://localhost:3000/api/todo/cm43zhjey00013h2bzkeb122c' -d '{"done":true, "text": "updated"}'
+curl -X DELETE -H 'Content-Type: application/json' 'http://localhost:3000/api/todo/cm43zhjey00013h2bzkeb122c'
+curl -X GET -H 'Content-Type: application/json' 'http://localhost:3000/api/todo'
 ```
 
