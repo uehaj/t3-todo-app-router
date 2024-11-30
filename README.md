@@ -1,3 +1,4 @@
+
 # T3 Todo TailwindCSS And App Router
 
 IT Media連載記事[フルスタックフレームワーク、T3 Stack入門](https://atmarkit.itmedia.co.jp/ait/series/34783/)の連載第三回目の掲載サンプルコードです。
@@ -49,3 +50,7 @@ http://localhost:3000/api/openapi.json
 - [t3-todo / App Router](https://github.com/uehaj/t3-todo-app-router)
 - [t3-todo / App Router with Server Actions](https://github.com/uehaj/t3-todo-app-router/tree/server_actions)
 - [t3-todo / AppRouter with trpc-to-openapi](https://github.com/uehaj/t3-todo-app-router/tree/trpc-to-openapi)
+
+# Screen Shot
+
+![screenshot](doc/images/todo.png)
